@@ -6,17 +6,7 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  SectionList,
-  ListItem,
-} from 'react-native';
+import {Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './pages/HomeScreen';
@@ -43,6 +33,13 @@ const App = () => {
               backgroundColor: '#5C6EA2',
             },
             headerShadowVisible: false,
+            headerRight: () => (
+              <Button
+                onPress={() => alert('This is a button!')}
+                title="+"
+                color="#fff"
+              />
+            ),
           }}
         />
       </Stack.Navigator>

@@ -5,13 +5,9 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
   SectionList,
-  ListItem,
+  TouchableOpacity,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 /**************
  * Page
@@ -22,7 +18,7 @@ export const HomeScreen = () => {
       style={containerStyles.main}
       contentInsetAdjustmentBehavior="automatic">
       <StatusBar barStyle="light-content" />
-      <ScrollView style={{padding: 20}}>
+      <ScrollView style={{paddingHorizontal: 20}}>
         <SectionList
           sections={DATA}
           keyExtractor={(item, index) => item + index}
@@ -39,10 +35,11 @@ export const HomeScreen = () => {
 /**************
  * Components
  **************/
+// TODO: Add onPress and bring up a modal with the apporiate data for editing
 const Item = ({title}) => (
-  <View style={containerStyles.listItem}>
+  <TouchableOpacity style={containerStyles.listItem}>
     <Text style={textStyles.listItem}>{title}</Text>
-  </View>
+  </TouchableOpacity>
 );
 
 // Dummy data
@@ -57,7 +54,7 @@ const DATA = [
   },
   {
     title: 'Walks',
-    data: ['Water', 'Coke', 'Beer'],
+    data: ['Morning', 'Evening'],
   },
   {
     title: 'Medication',
@@ -79,7 +76,7 @@ const containerStyles = StyleSheet.create({
   },
   listItem: {
     backgroundColor: 'rgba(194, 199, 197, 0.5)',
-    borderRadius: 7,
+    borderRadius: 10,
     height: 50,
     marginVertical: 10,
     justifyContent: 'center',
@@ -96,6 +93,8 @@ const textStyles = StyleSheet.create({
   listItem: {
     fontSize: 17,
     marginHorizontal: 8,
+    color: '#32292F',
+    fontWeight: '500',
   },
 });
 
