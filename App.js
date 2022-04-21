@@ -6,10 +6,10 @@
  */
 
 import React from 'react';
-import {Button} from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { HomeScreen } from './pages/HomeScreen';
+import {HomeScreen} from './pages/HomeScreen';
 import UserDataProvider from './context/UserDataContext';
 
 const Stack = createNativeStackNavigator();
@@ -36,11 +36,9 @@ const App = () => {
               },
               headerShadowVisible: false,
               headerRight: () => (
-                <Button
-                  onPress={() => alert('This is a button!')}
-                  title="+"
-                  color="#fff"
-                />
+                <TouchableOpacity onPress={() => alert('This is a button!')}>
+                  <Text style={{color: '#fff', fontSize: 36}}>+</Text>
+                </TouchableOpacity>
               ),
             }}
           />
