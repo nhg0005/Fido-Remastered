@@ -30,7 +30,7 @@ export const HomeScreen = () => {
         renderSectionHeader={({section: {title}}) => (
           <Text style={textStyles.sectionHeader}>{title}</Text>
         )}
-        renderItem={({item}) => <Item title={item} />}
+        renderItem={({item}) => <Item title={item.item} />}
       />
     </SafeAreaView>
   );

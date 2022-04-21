@@ -7,23 +7,35 @@ const UserDataProvider = ({children}) => {
   const [dummyData, setDummyData] = useState([
     {
       title: 'To do',
-      data: ['Make doc appt', 'Get more dog food'],
+      data: [
+        {item: 'Make doc appt', date: '12'},
+        {item: 'Get more dog food', date: '2'},
+      ],
     },
     {
       title: 'Meals',
-      data: ['Lunch', 'Dinner', 'Denta-stix'],
+      data: [
+        {item: 'Lunch', date: '12'},
+        {item: 'Dinner', date: '2'},
+      ],
     },
     {
       title: 'Walks',
-      data: ['Morning', 'Evening'],
+      data: [
+        {item: 'Morning', date: '12'},
+        {item: 'Evening', date: '2'},
+      ],
     },
     {
       title: 'Medication',
-      data: ['Heart worm prevention', 'Flea and tick prevention'],
+      data: [
+        {item: 'Heart worm prevention', date: '12'},
+        {item: 'Flea and tick prevention', date: '2'},
+      ],
     },
     {
       title: 'Appointments',
-      data: ['Annual check up'],
+      data: [{item: 'Annual check up', date: '12'}],
     },
   ]);
 
