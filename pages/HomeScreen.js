@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -8,11 +8,14 @@ import {
   SectionList,
   TouchableOpacity,
 } from 'react-native';
+import {UserDataContext} from '../context/UserDataContext';
 
 /**************
  * Page
  **************/
 export const HomeScreen = () => {
+  const {dummyData} = useContext(UserDataContext);
+
   return (
     <SafeAreaView
       style={containerStyles.main}
@@ -20,7 +23,7 @@ export const HomeScreen = () => {
       <StatusBar barStyle="light-content" />
       <ScrollView style={{paddingHorizontal: 20}}>
         <SectionList
-          sections={DATA}
+          sections={dummyData}
           keyExtractor={(item, index) => item + index}
           renderSectionHeader={({section: {title}}) => (
             <Text style={textStyles.sectionHeader}>{title}</Text>
