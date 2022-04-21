@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState, useLayoutEffect} from 'react';
 import {
   StatusBar,
   StyleSheet,
@@ -22,7 +22,7 @@ import {AppointmentOptions} from '../components/AppointmentOptions';
 /**************
  * Page
  **************/
-export const NewItemModal = () => {
+export const NewItemModal = ({navigation}) => {
   /* State Hooks */
   //   const {dummyData} = useContext(UserDataContext);
   const [selectedList, setSelectedList] = useState('To do');
@@ -34,6 +34,21 @@ export const NewItemModal = () => {
 
   /* Lifecycle Hooks */
   //   useEffect(() => {}, [dummyData]);
+  // Adds new item header button to call modal
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => console.log('Add button pressed')}>
+          <Text style={{color: '#fff', fontSize: 18}}>Add</Text>
+        </TouchableOpacity>
+      ),
+      headerLeft: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={{color: '#fff', fontSize: 18}}>Cancel</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
 
   /* Handlers */
   // TODO: Input handler
@@ -41,6 +56,7 @@ export const NewItemModal = () => {
   // TOOD: 'Add' button handler
 
   // TODO: Add a 'cancel' and an 'add' button to the headers
+  // TODO: Make picking a date optional. Maybe pull up the picker with the TO is tapped. Add placeholder note to TO 'Tap here to add a date/time'
   return (
     <KeyboardAvoidingView
       behavior="position"
