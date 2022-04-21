@@ -31,7 +31,7 @@ const UserDataProvider = ({children}) => {
   useEffect(() => {}, []);
 
   return (
-    <UserDataContext.Provider value={{dummyData}}>
+    <UserDataContext.Provider value={{dummyData, setDummyData}}>
       {children}
     </UserDataContext.Provider>
   );

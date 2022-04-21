@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -15,6 +15,8 @@ import {UserDataContext} from '../context/UserDataContext';
  **************/
 export const HomeScreen = () => {
   const {dummyData} = useContext(UserDataContext);
+
+  useEffect(() => {}, [dummyData]);
 
   return (
     <SafeAreaView
@@ -38,11 +40,26 @@ export const HomeScreen = () => {
  * Components
  **************/
 // TODO: Add onPress and bring up a modal with the appropriate data for editing
-const Item = ({title}) => (
-  <TouchableOpacity style={containerStyles.listItem}>
-    <Text style={textStyles.listItem}>{title}</Text>
-  </TouchableOpacity>
-);
+const Item = ({title}) => {
+  const {setDummyData} = useContext(UserDataContext);
+
+  return (
+    <TouchableOpacity
+      style={containerStyles.listItem}
+      onPress={() => {
+        setDummyData(dummyData =>
+          dummyData.concat([
+            {
+              title: 'ok do',
+              data: ['Make doc ok', 'Get ok dog food'],
+            },
+          ]),
+        );
+      }}>
+      <Text style={textStyles.listItem}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
 
 /**************
  * Styling
