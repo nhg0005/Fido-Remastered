@@ -14,6 +14,9 @@ import {UserDataContext} from '../context/UserDataContext';
 import {Picker} from '@react-native-picker/picker';
 import {ToDoOptions} from '../components/ToDoOptions';
 import {MealOptions} from '../components/MealOptions';
+import {WalkOptions} from '../components/WalkOptions';
+import {MedicationOptions} from '../components/MedicationOptions';
+import {AppointmentOptions} from '../components/AppointmentOptions';
 
 /**************
  * Page
@@ -47,6 +50,9 @@ export const NewItemModal = () => {
       {/* Display based on list selection */}
       {selectedList === 'To do' && <ToDoOptions />}
       {selectedList === 'Meals' && <MealOptions />}
+      {selectedList === 'Walks' && <WalkOptions />}
+      {selectedList === 'Medication' && <MedicationOptions />}
+      {selectedList === 'Appointments' && <AppointmentOptions />}
     </ScrollView>
   );
 };
