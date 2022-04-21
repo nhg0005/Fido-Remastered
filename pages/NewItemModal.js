@@ -27,15 +27,20 @@ export const NewItemModal = () => {
   //   const {dummyData} = useContext(UserDataContext);
   const [selectedList, setSelectedList] = useState('To do');
 
-  const [newTask, setNewTask] = useState('');
-  const [newDate, setNewDate] = useState();
+  const [newNote, setNewNote] = useState('');
+  const [newDate, setNewDate] = useState(new Date());
+  const [frequency, setFrequency] = useState();
+  const [wantsNotification, setWantsNotification] = useState();
 
   /* Lifecycle Hooks */
   //   useEffect(() => {}, [dummyData]);
 
   /* Handlers */
-  // Input handler
+  // TODO: Input handler
 
+  // TOOD: 'Add' button handler
+
+  // TODO: Add a 'cancel' and an 'add' button to the headers
   return (
     <KeyboardAvoidingView
       behavior="position"
@@ -53,11 +58,56 @@ export const NewItemModal = () => {
         <Picker.Item label="Appointments" value="Appointments" />
       </Picker>
       {/* Display based on list selection */}
-      {selectedList === 'To do' && <ToDoOptions />}
-      {selectedList === 'Meals' && <MealOptions />}
-      {selectedList === 'Walks' && <WalkOptions />}
-      {selectedList === 'Medication' && <MedicationOptions />}
-      {selectedList === 'Appointments' && <AppointmentOptions />}
+      {selectedList === 'To do' && (
+        <ToDoOptions
+          newNote={newNote}
+          setNewNote={setNewNote}
+          newDate={newDate}
+          setNewDate={setNewDate}
+          wantsNotification={wantsNotification}
+          setWantsNotification={setWantsNotification}
+        />
+      )}
+      {selectedList === 'Meals' && (
+        <MealOptions
+          newNote={newNote}
+          setNewNote={setNewNote}
+          newDate={newDate}
+          setNewDate={setNewDate}
+          wantsNotification={wantsNotification}
+          setWantsNotification={setWantsNotification}
+        />
+      )}
+      {selectedList === 'Walks' && (
+        <WalkOptions
+          newDate={newDate}
+          setNewDate={setNewDate}
+          wantsNotification={wantsNotification}
+          setWantsNotification={setWantsNotification}
+        />
+      )}
+      {selectedList === 'Medication' && (
+        <MedicationOptions
+          newNote={newNote}
+          setNewNote={setNewNote}
+          newDate={newDate}
+          setNewDate={setNewDate}
+          wantsNotification={wantsNotification}
+          setWantsNotification={setWantsNotification}
+          frequency={frequency}
+          setFrequency={setFrequency}
+        />
+      )}
+      {selectedList === 'Appointments' && (
+        <AppointmentOptions
+          newNote={newNote}
+          setNewNote={setNewNote}
+          newDate={newDate}
+          setNewDate={setNewDate}
+          wantsNotification={wantsNotification}
+          setWantsNotification={setWantsNotification}
+        />
+      )}
     </KeyboardAvoidingView>
   );
 };

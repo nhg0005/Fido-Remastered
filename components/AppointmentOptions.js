@@ -13,17 +13,22 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 /**************
  * Page
  **************/
-export const AppointmentOptions = () => {
+export const AppointmentOptions = ({
+  newNote,
+  setNewNote,
+  newDate,
+  setNewDate,
+  wantsNotification,
+  setWantsNotification,
+}) => {
   /* State Hooks */
-  // To be moved to NewItemModal
-  const [date, setDate] = useState(new Date());
 
   /* Lifecycle Hooks */
 
   /* Functions */
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
-    setDate(currentDate);
+    setNewDate(currentDate);
   };
 
   return (
@@ -34,18 +39,21 @@ export const AppointmentOptions = () => {
         style={containerStyles.listItem}
         returnKeyType="done"
         placeholder="Rabies shot"
+        value={newNote}
+        onChangeText={setNewNote}
       />
       {/* Date */}
       <Text style={textStyles.sectionHeader}>Date</Text>
       <TouchableOpacity style={containerStyles.listItem}>
         <DateTimePicker
           testID="dateTimePicker"
-          value={date}
+          value={newDate}
           mode={'datetime'}
           is24Hour={true}
           onChange={onChange}
         />
       </TouchableOpacity>
+      {/* TODO: Wants notif? */}
     </View>
   );
 };
