@@ -11,6 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './pages/HomeScreen';
 import UserDataProvider from './context/UserDataContext';
+import {NewItemModal} from './pages/NewItemModal';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,11 +36,21 @@ const App = () => {
                 backgroundColor: '#5C6EA2',
               },
               headerShadowVisible: false,
-              headerRight: () => (
-                <TouchableOpacity onPress={() => alert('This is a button!')}>
-                  <Text style={{color: '#fff', fontSize: 36}}>+</Text>
-                </TouchableOpacity>
-              ),
+            }}
+          />
+          <Stack.Screen
+            name="NewItemModal"
+            component={NewItemModal}
+            options={{
+              title: 'Add something to a list',
+              headerTitleStyle: {
+                color: '#D1E3DD',
+              },
+              headerStyle: {
+                backgroundColor: '#5C6EA2',
+              },
+              headerShadowVisible: false,
+              presentation: 'modal',
             }}
           />
         </Stack.Navigator>

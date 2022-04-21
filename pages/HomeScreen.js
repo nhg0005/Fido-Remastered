@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useLayoutEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,9 +13,21 @@ import {UserDataContext} from '../context/UserDataContext';
 /**************
  * Page
  **************/
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}) => {
   const {dummyData} = useContext(UserDataContext);
 
+  // Adds new item header button to call modal
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('NewItemModal')}>
+          <Text style={{color: '#fff', fontSize: 36}}>+</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
+  // Updates the data on screen
   useEffect(() => {}, [dummyData]);
 
   return (
