@@ -9,6 +9,7 @@ import {
   ScrollView,
   View,
   TextInput,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {UserDataContext} from '../context/UserDataContext';
 import {Picker} from '@react-native-picker/picker';
@@ -33,9 +34,10 @@ export const NewItemModal = () => {
   //   useEffect(() => {}, [dummyData]);
 
   return (
-    <ScrollView
-      style={containerStyles.main}
-      contentInsetAdjustmentBehavior="automatic">
+    <KeyboardAvoidingView
+      behavior="position"
+      enabled
+      style={containerStyles.main}>
       <Text style={textStyles.sectionHeader}>Select a list</Text>
       <Picker
         selectedValue={selectedList}
@@ -53,7 +55,7 @@ export const NewItemModal = () => {
       {selectedList === 'Walks' && <WalkOptions />}
       {selectedList === 'Medication' && <MedicationOptions />}
       {selectedList === 'Appointments' && <AppointmentOptions />}
-    </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
