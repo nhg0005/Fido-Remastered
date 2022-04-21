@@ -37,36 +37,12 @@ export const HomeScreen = () => {
 /**************
  * Components
  **************/
-// TODO: Add onPress and bring up a modal with the apporiate data for editing
+// TODO: Add onPress and bring up a modal with the appropriate data for editing
 const Item = ({title}) => (
   <TouchableOpacity style={containerStyles.listItem}>
     <Text style={textStyles.listItem}>{title}</Text>
   </TouchableOpacity>
 );
-
-// Dummy data
-const DATA = [
-  {
-    title: 'To do',
-    data: ['Make doc appt', 'Get more dog food'],
-  },
-  {
-    title: 'Meals',
-    data: ['Lunch', 'Dinner', 'Denta-stix'],
-  },
-  {
-    title: 'Walks',
-    data: ['Morning', 'Evening'],
-  },
-  {
-    title: 'Medication',
-    data: ['Heart worm prevention', 'Flea and tick prevention'],
-  },
-  {
-    title: 'Appointments',
-    data: ['Annual check up'],
-  },
-];
 
 /**************
  * Styling
