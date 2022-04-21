@@ -21,16 +21,15 @@ export const HomeScreen = () => {
       style={containerStyles.main}
       contentInsetAdjustmentBehavior="automatic">
       <StatusBar barStyle="light-content" />
-      <ScrollView style={{paddingHorizontal: 20}}>
-        <SectionList
-          sections={dummyData}
-          keyExtractor={(item, index) => item + index}
-          renderSectionHeader={({section: {title}}) => (
-            <Text style={textStyles.sectionHeader}>{title}</Text>
-          )}
-          renderItem={({item}) => <Item title={item} />}
-        />
-      </ScrollView>
+      <SectionList
+        style={{paddingHorizontal: 20}}
+        sections={dummyData}
+        keyExtractor={(item, index) => item + index}
+        renderSectionHeader={({section: {title}}) => (
+          <Text style={textStyles.sectionHeader}>{title}</Text>
+        )}
+        renderItem={({item}) => <Item title={item} />}
+      />
     </SafeAreaView>
   );
 };
