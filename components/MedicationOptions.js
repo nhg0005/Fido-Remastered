@@ -1,25 +1,52 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import {UserDataContext} from '../context/UserDataContext';
 import {Picker} from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 /**************
  * Page
  **************/
 export const MedicationOptions = () => {
   /* State Hooks */
+  // To be moved to NewItemModal
+  const [date, setDate] = useState(new Date());
 
   /* Lifecycle Hooks */
 
+  /* Functions */
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
   return (
     <View style={containerStyles.newItemInput}>
+      {/* Name */}
       <Text style={textStyles.sectionHeader}>Name</Text>
       <TextInput
         style={containerStyles.listItem}
         returnKeyType="done"
         placeholder="Flea meds"
       />
+      {/* Date */}
       <Text style={textStyles.sectionHeader}>Date</Text>
+      <TouchableOpacity style={containerStyles.listItem}>
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={'datetime'}
+          is24Hour={true}
+          onChange={onChange}
+        />
+      </TouchableOpacity>
+      {/* Frequency */}
       <Text style={textStyles.sectionHeader}>Frequency</Text>
     </View>
   );

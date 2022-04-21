@@ -33,6 +33,9 @@ export const NewItemModal = () => {
   /* Lifecycle Hooks */
   //   useEffect(() => {}, [dummyData]);
 
+  /* Handlers */
+  // Input handler
+
   return (
     <KeyboardAvoidingView
       behavior="position"
