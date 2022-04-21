@@ -14,8 +14,10 @@ import {UserDataContext} from '../context/UserDataContext';
  * Page
  **************/
 export const HomeScreen = ({navigation}) => {
+  /* State Hooks */
   const {dummyData} = useContext(UserDataContext);
 
+  /* Lifecycle Hooks */
   // Adds new item header button to call modal
   useLayoutEffect(() => {
     navigation.setOptions({
