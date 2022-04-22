@@ -41,9 +41,13 @@ export const HomeScreen = ({navigation}) => {
         style={{paddingHorizontal: 20}}
         sections={dummyData}
         keyExtractor={(item, index) => item + index}
-        renderSectionHeader={({section: {title}}) => (
-          <Text style={textStyles.sectionHeader}>{title}</Text>
-        )}
+        renderSectionHeader={({section: {title, data}}) => {
+          // Hide the section header if there is no data in the section
+          if (data.length === 0) {
+            return;
+          }
+          return <Text style={textStyles.sectionHeader}>{title}</Text>;
+        }}
         renderItem={({item, section: {title}}) => (
           <Item title={item.item} date={item.date} sectionTitle={title} />
         )}
