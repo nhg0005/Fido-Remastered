@@ -12,6 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './pages/HomeScreen';
 import UserDataProvider from './context/UserDataContext';
 import {NewItemModal} from './pages/NewItemModal';
+import {EditItemModal} from './pages/EditItemModal';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,21 @@ const App = () => {
             component={NewItemModal}
             options={{
               title: 'Add something to a list',
+              headerTitleStyle: {
+                color: '#D1E3DD',
+              },
+              headerStyle: {
+                backgroundColor: '#5C6EA2',
+              },
+              headerShadowVisible: false,
+              presentation: 'modal',
+            }}
+          />
+          <Stack.Screen
+            name="EditItemModal"
+            component={EditItemModal}
+            options={{
+              title: 'Edit',
               headerTitleStyle: {
                 color: '#D1E3DD',
               },

@@ -8,34 +8,34 @@ const UserDataProvider = ({children}) => {
     {
       title: 'To do',
       data: [
-        {item: 'Make doc appt', date: '12'},
-        {item: 'Get more dog food', date: '2'},
+        {item: 'Make doc appt', date: new Date()},
+        {item: 'Get more dog food', date: new Date()},
       ],
     },
     {
       title: 'Meals',
       data: [
-        {item: 'Lunch', date: '12'},
-        {item: 'Dinner', date: '2'},
+        {item: 'Lunch', date: new Date()},
+        {item: 'Dinner', date: new Date()},
       ],
     },
     {
       title: 'Walks',
       data: [
-        {item: 'Morning', date: '12'},
-        {item: 'Evening', date: '2'},
+        {item: 'Morning', date: new Date()},
+        {item: 'Evening', date: new Date()},
       ],
     },
     {
       title: 'Medication',
       data: [
-        {item: 'Heart worm prevention', date: '12'},
-        {item: 'Flea and tick prevention', date: '2'},
+        {item: 'Heart worm prevention', date: new Date()},
+        {item: 'Flea and tick prevention', date: new Date()},
       ],
     },
     {
       title: 'Appointments',
-      data: [{item: 'Annual check up', date: '12'}],
+      data: [{item: 'Annual check up', date: new Date()}],
     },
   ]);
 

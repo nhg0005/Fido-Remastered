@@ -49,7 +49,12 @@ export const HomeScreen = ({navigation}) => {
           return <Text style={textStyles.sectionHeader}>{title}</Text>;
         }}
         renderItem={({item, section: {title}}) => (
-          <Item title={item.item} date={item.date} sectionTitle={title} />
+          <Item
+            title={item.item}
+            date={item.date}
+            sectionTitle={title}
+            navigation={navigation}
+          />
         )}
       />
     </SafeAreaView>
@@ -60,7 +65,7 @@ export const HomeScreen = ({navigation}) => {
  * Components
  **************/
 // TODO: Add onPress and bring up a modal with the appropriate data for editing
-const Item = ({title, date, sectionTitle}) => {
+const Item = ({title, date, sectionTitle, navigation}) => {
   const {setDummyData} = useContext(UserDataContext);
 
   /* Functions */
@@ -103,7 +108,11 @@ const Item = ({title, date, sectionTitle}) => {
     <TouchableOpacity
       style={containerStyles.listItem}
       onPress={() => {
-        console.log('TODO: Bring up edit modal');
+        navigation.navigate('EditItemModal', {
+          title: title,
+          date: date,
+          sectionTitle: sectionTitle,
+        });
       }}>
       {/* Width used for making the ellipses work, along with numberOfLines and flex: 1 */}
       {/* TODO: Add frequency for Medication, right under the time */}
