@@ -44,7 +44,9 @@ export const HomeScreen = ({navigation}) => {
         renderSectionHeader={({section: {title}}) => (
           <Text style={textStyles.sectionHeader}>{title}</Text>
         )}
-        renderItem={({item}) => <Item title={item.item} date={item.date} />}
+        renderItem={({item, section: {title}}) => (
+          <Item title={item.item} date={item.date} sectionTitle={title} />
+        )}
       />
     </SafeAreaView>
   );
@@ -54,8 +56,44 @@ export const HomeScreen = ({navigation}) => {
  * Components
  **************/
 // TODO: Add onPress and bring up a modal with the appropriate data for editing
-const Item = ({title, date}) => {
+const Item = ({title, date, sectionTitle}) => {
   const {setDummyData} = useContext(UserDataContext);
+
+  /* Functions */
+  const dateToString = () => {
+    switch (sectionTitle) {
+      case 'To do':
+        return date.toLocaleString([], {
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+        });
+      case 'Meals':
+        return date.toLocaleString([], {
+          hour: 'numeric',
+          minute: '2-digit',
+        });
+      case 'Walks':
+        return date.toLocaleString([], {
+          hour: 'numeric',
+          minute: '2-digit',
+        });
+      case 'Medication':
+        return date.toLocaleString([], {
+          hour: 'numeric',
+          minute: '2-digit',
+        });
+      case 'Appointments':
+        return date.toLocaleString([], {
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+        });
+    }
+    return date;
+  };
 
   return (
     <TouchableOpacity
@@ -64,17 +102,13 @@ const Item = ({title, date}) => {
         console.log('TODO: Bring up edit modal');
       }}>
       {/* Width used for making the ellipses work, along with numberOfLines and flex: 1 */}
+      {/* TODO: Add frequency for Medication, right under the time */}
       <Text style={(textStyles.listItem, {width: 200})} numberOfLines={1}>
         {title}
       </Text>
       <Text style={textStyles.listItem}>
         {/* TODO: Write a function up top: IF ELSE statements for showing date/time properly based on section. Pass in section */}
-        {date.toLocaleString([], {
-          month: 'numeric',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: '2-digit',
-        })}
+        {dateToString()}
       </Text>
     </TouchableOpacity>
   );
