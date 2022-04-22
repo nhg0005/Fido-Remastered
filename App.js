@@ -5,7 +5,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -13,10 +13,35 @@ import {HomeScreen} from './pages/HomeScreen';
 import UserDataProvider from './context/UserDataContext';
 import {NewItemModal} from './pages/NewItemModal';
 import {EditItemModal} from './pages/EditItemModal';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  ///////////// Notification setup /////////////
+  // Set up notification permissions
+  useEffect(() => {
+    // Request permissions to display notifications
+    PushNotificationIOS.requestPermissions({
+      alert: true,
+      badge: true,
+      sound: true,
+      critical: true,
+    }).then(
+      data => {
+        console.log('PushNotificationIOS.requestPermissions succeeded:', data);
+      },
+      data => {
+        console.log('PushNotificationIOS.requestPermissions failed.', data);
+      },
+    );
+
+    return () => {
+      // PushNotificationIOS.removeEventListener('localNotification');
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <UserDataProvider>
       <NavigationContainer>
