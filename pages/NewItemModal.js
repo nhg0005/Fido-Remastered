@@ -30,7 +30,7 @@ export const NewItemModal = ({navigation}) => {
   const [newNote, setNewNote] = useState('');
   const [newDate, setNewDate] = useState(new Date());
   const [frequency, setFrequency] = useState();
-  const [wantsNotification, setWantsNotification] = useState();
+  const [wantsNotification, setWantsNotification] = useState(false);
 
   /* Lifecycle Hooks */
   useEffect(() => {}, [dummyData]);
@@ -147,6 +147,8 @@ export const NewItemModal = ({navigation}) => {
     setSelectedList,
     dummyData,
     setDummyData,
+    wantsNotification,
+    setWantsNotification,
   ]);
 
   /* Handlers */

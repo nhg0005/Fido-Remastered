@@ -9,6 +9,8 @@ import {
 import {UserDataContext} from '../context/UserDataContext';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+import EntIcon from 'react-native-vector-icons/Entypo';
 
 /**************
  * Page
@@ -24,6 +26,7 @@ export const ToDoOptions = ({
   /* State Hooks */
 
   /* Lifecycle Hooks */
+  // useEffect(() => {}, [setWantsNotification]);
 
   /* Functions */
   // DateTimePicker change handler
@@ -55,6 +58,16 @@ export const ToDoOptions = ({
         />
       </TouchableOpacity>
       {/* TODO: Wants notif? */}
+      <TouchableOpacity
+        style={containerStyles.viewWithIcon}
+        onPress={() => setWantsNotification(!wantsNotification)}>
+        <Text style={textStyles.sectionHeader}>Want to be notified?</Text>
+        {wantsNotification === true ? (
+          <AntIcon name="checkcircle" size={30} color="rgb(194, 199, 197)" />
+        ) : (
+          <EntIcon name="circle" size={30} color="rgb(194, 199, 197)" />
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
@@ -83,6 +96,13 @@ const containerStyles = StyleSheet.create({
     paddingHorizontal: 8,
     color: '#32292F',
     fontWeight: '500',
+  },
+  viewWithIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 8,
+    paddingVertical: 8,
   },
 });
 
