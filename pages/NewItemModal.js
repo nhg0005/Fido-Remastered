@@ -71,6 +71,9 @@ export const NewItemModal = ({navigation}) => {
       } else {
         console.log('Wat');
       }
+
+      // Dismiss the modal
+      return navigation.navigate('Home');
     };
   }, [
     navigation,

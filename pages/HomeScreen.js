@@ -44,7 +44,7 @@ export const HomeScreen = ({navigation}) => {
         renderSectionHeader={({section: {title}}) => (
           <Text style={textStyles.sectionHeader}>{title}</Text>
         )}
-        renderItem={({item}) => <Item title={item.item} />}
+        renderItem={({item}) => <Item title={item.item} date={item.date} />}
       />
     </SafeAreaView>
   );
@@ -54,23 +54,27 @@ export const HomeScreen = ({navigation}) => {
  * Components
  **************/
 // TODO: Add onPress and bring up a modal with the appropriate data for editing
-const Item = ({title}) => {
+const Item = ({title, date}) => {
   const {setDummyData} = useContext(UserDataContext);
 
   return (
     <TouchableOpacity
       style={containerStyles.listItem}
       onPress={() => {
-        setDummyData(dummyData =>
-          dummyData.concat([
-            {
-              title: 'ok do',
-              data: ['Make doc ok', 'Get ok dog food'],
-            },
-          ]),
-        );
+        console.log('TODO: Bring up edit modal');
       }}>
-      <Text style={textStyles.listItem}>{title}</Text>
+      {/* Width used for making the ellipses work, along with numberOfLines and flex: 1 */}
+      <Text style={(textStyles.listItem, {width: 200})} numberOfLines={1}>
+        {title}
+      </Text>
+      <Text style={textStyles.listItem}>
+        {date.toLocaleString([], {
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+        })}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -84,11 +88,15 @@ const containerStyles = StyleSheet.create({
     backgroundColor: '#5C6EA2',
   },
   listItem: {
+    flex: 1,
+    flexDirection: 'row',
     backgroundColor: 'rgba(194, 199, 197, 0.5)',
     borderRadius: 10,
     height: 50,
     marginVertical: 10,
-    justifyContent: 'center',
+    paddingHorizontal: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
