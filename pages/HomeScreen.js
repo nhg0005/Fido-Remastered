@@ -68,6 +68,7 @@ const Item = ({title, date}) => {
         {title}
       </Text>
       <Text style={textStyles.listItem}>
+        {/* TODO: Write a function up top: IF ELSE statements for showing date/time properly based on section. Pass in section */}
         {date.toLocaleString([], {
           month: 'numeric',
           day: 'numeric',

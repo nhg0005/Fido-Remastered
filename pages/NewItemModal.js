@@ -68,6 +68,69 @@ export const NewItemModal = ({navigation}) => {
         });
         // Set copy to state
         setDummyData(updatedData);
+      } else if (selectedList === 'Meals') {
+        // Make a copy of dummyData
+        const updatedData = [...dummyData];
+        // Replace the object in copy
+        let obj = updatedData.find((o, i) => {
+          if (o.title === 'Meals') {
+            updatedData[i] = {
+              title: o.title,
+              data: [...o.data, {item: newNote, date: newDate}],
+            };
+            return true;
+          }
+        });
+        // Set copy to state
+        setDummyData(updatedData);
+      } else if (selectedList === 'Walks') {
+        // Make a copy of dummyData
+        const updatedData = [...dummyData];
+        // Replace the object in copy
+        let obj = updatedData.find((o, i) => {
+          if (o.title === 'Walks') {
+            updatedData[i] = {
+              title: o.title,
+              data: [...o.data, {date: newDate}],
+            };
+            return true;
+          }
+        });
+        // Set copy to state
+        setDummyData(updatedData);
+      } else if (selectedList === 'Medication') {
+        // Make a copy of dummyData
+        const updatedData = [...dummyData];
+        // Replace the object in copy
+        let obj = updatedData.find((o, i) => {
+          if (o.title === 'Medication') {
+            updatedData[i] = {
+              title: o.title,
+              data: [
+                ...o.data,
+                {item: newNote, date: newDate, frequency: frequency},
+              ],
+            };
+            return true;
+          }
+        });
+        // Set copy to state
+        setDummyData(updatedData);
+      } else if (selectedList === 'Appointments') {
+        // Make a copy of dummyData
+        const updatedData = [...dummyData];
+        // Replace the object in copy
+        let obj = updatedData.find((o, i) => {
+          if (o.title === 'Appointments') {
+            updatedData[i] = {
+              title: o.title,
+              data: [...o.data, {item: newNote, date: newDate}],
+            };
+            return true;
+          }
+        });
+        // Set copy to state
+        setDummyData(updatedData);
       } else {
         console.log('Wat');
       }
