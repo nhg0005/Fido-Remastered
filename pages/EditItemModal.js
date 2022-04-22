@@ -26,7 +26,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 export const EditItemModal = ({route, navigation}) => {
   /* State Hooks */
   const {dummyData, setDummyData} = useContext(UserDataContext);
-  const [selectedList, setSelectedList] = useState('To do');
+  //   const [selectedList, setSelectedList] = useState('To do');
 
   // Props from navigation.navigate
   const {title, date, sectionTitle} = route.params;
@@ -43,7 +43,7 @@ export const EditItemModal = ({route, navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => console.log('TODO: Edit function')}>
+        <TouchableOpacity onPress={() => editListItem()}>
           <Text style={{color: '#fff', fontSize: 18}}>Edit</Text>
         </TouchableOpacity>
       ),
@@ -54,87 +54,27 @@ export const EditItemModal = ({route, navigation}) => {
       ),
     });
 
-    // TODO: 'Add' button handler
-    const addListItem = () => {
+    // TODO: 'Edit' button handler
+    const editListItem = () => {
       // If 'To do' is selected
-      if (selectedList === 'To do') {
+      if (sectionTitle === 'To do') {
         // Make a copy of dummyData
-        const updatedData = [...dummyData];
+        const editedData = [...dummyData];
         // Replace the object in copy
-        let obj = updatedData.find((o, i) => {
+        let obj = editedData.find((o, i) => {
           if (o.title === 'To do') {
-            updatedData[i] = {
-              title: o.title,
-              data: [...o.data, {item: newNote, date: newDate}],
-            };
-            return true;
+            // Search the data object to find the object that's being edited, matched by 'item'
+            let edObj = o.data.find((p, j) => {
+              if (p.item === title) {
+                // Edit the found object
+                o.data[j] = {item: editedNote, date: editedDate};
+                return true;
+              }
+            });
           }
         });
         // Set copy to state
-        setDummyData(updatedData);
-      } else if (selectedList === 'Meals') {
-        // Make a copy of dummyData
-        const updatedData = [...dummyData];
-        // Replace the object in copy
-        let obj = updatedData.find((o, i) => {
-          if (o.title === 'Meals') {
-            updatedData[i] = {
-              title: o.title,
-              data: [...o.data, {item: newNote, date: newDate}],
-            };
-            return true;
-          }
-        });
-        // Set copy to state
-        setDummyData(updatedData);
-      } else if (selectedList === 'Walks') {
-        // Make a copy of dummyData
-        const updatedData = [...dummyData];
-        // Replace the object in copy
-        let obj = updatedData.find((o, i) => {
-          if (o.title === 'Walks') {
-            updatedData[i] = {
-              title: o.title,
-              data: [...o.data, {date: newDate}],
-            };
-            return true;
-          }
-        });
-        // Set copy to state
-        setDummyData(updatedData);
-      } else if (selectedList === 'Medication') {
-        // Make a copy of dummyData
-        const updatedData = [...dummyData];
-        // Replace the object in copy
-        let obj = updatedData.find((o, i) => {
-          if (o.title === 'Medication') {
-            updatedData[i] = {
-              title: o.title,
-              data: [
-                ...o.data,
-                {item: newNote, date: newDate, frequency: frequency},
-              ],
-            };
-            return true;
-          }
-        });
-        // Set copy to state
-        setDummyData(updatedData);
-      } else if (selectedList === 'Appointments') {
-        // Make a copy of dummyData
-        const updatedData = [...dummyData];
-        // Replace the object in copy
-        let obj = updatedData.find((o, i) => {
-          if (o.title === 'Appointments') {
-            updatedData[i] = {
-              title: o.title,
-              data: [...o.data, {item: newNote, date: newDate}],
-            };
-            return true;
-          }
-        });
-        // Set copy to state
-        setDummyData(updatedData);
+        setDummyData(editedData);
       } else {
         console.log('Wat');
       }
@@ -142,7 +82,16 @@ export const EditItemModal = ({route, navigation}) => {
       // Dismiss the modal
       return navigation.navigate('Home');
     };
-  }, []);
+  }, [
+    navigation,
+    sectionTitle,
+    editedNote,
+    editedDate,
+    editedFrequency,
+    dummyData,
+    setDummyData,
+    title,
+  ]);
 
   /* Handlers */
 
