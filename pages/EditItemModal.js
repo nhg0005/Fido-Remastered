@@ -75,6 +75,89 @@ export const EditItemModal = ({route, navigation}) => {
         });
         // Set copy to state
         setDummyData(editedData);
+      } // If 'Meals' is selected
+      else if (sectionTitle === 'Meals') {
+        // Make a copy of dummyData
+        const editedData = [...dummyData];
+        // Replace the object in copy
+        let obj = editedData.find((o, i) => {
+          if (o.title === 'Meals') {
+            // Search the data object to find the object that's being edited, matched by 'item'
+            let edObj = o.data.find((p, j) => {
+              if (p.item === title) {
+                // Edit the found object
+                o.data[j] = {item: editedNote, date: editedDate};
+                return true;
+              }
+            });
+          }
+        });
+        // Set copy to state
+        setDummyData(editedData);
+      } // If 'Walks' is selected
+      else if (sectionTitle === 'Walks') {
+        // Make a copy of dummyData
+        const editedData = [...dummyData];
+        // Replace the object in copy
+        let obj = editedData.find((o, i) => {
+          if (o.title === 'Walks') {
+            // Search the data object to find the object that's being edited, matched by 'item'
+            let edObj = o.data.find((p, j) => {
+              if (p.item === title) {
+                // Edit the found object
+                o.data[j] = {item: editedNote, date: editedDate};
+                return true;
+              }
+            });
+          }
+        });
+        // Set copy to state
+        setDummyData(editedData);
+      } // If 'Medication' is selected
+      else if (sectionTitle === 'Medication') {
+        // Make a copy of dummyData
+        const editedData = [...dummyData];
+        // Replace the object in copy
+        let obj = editedData.find((o, i) => {
+          if (o.title === 'Medication') {
+            // Search the data object to find the object that's being edited, matched by 'item'
+            let edObj = o.data.find((p, j) => {
+              if (p.item === title) {
+                // Edit the found object
+                o.data[j] = {
+                  item: editedNote,
+                  date: editedDate,
+                  frequency: editedFrequency,
+                };
+                return true;
+              }
+            });
+          }
+        });
+        // Set copy to state
+        setDummyData(editedData);
+      } // If 'Appointments' is selected
+      else if (sectionTitle === 'Appointments') {
+        // Make a copy of dummyData
+        const editedData = [...dummyData];
+        // Replace the object in copy
+        let obj = editedData.find((o, i) => {
+          if (o.title === 'Appointments') {
+            // Search the data object to find the object that's being edited, matched by 'item'
+            let edObj = o.data.find((p, j) => {
+              if (p.item === title) {
+                // Edit the found object
+                o.data[j] = {
+                  item: editedNote,
+                  date: editedDate,
+                };
+                return true;
+              }
+            });
+          }
+        });
+        // Set copy to state
+        setDummyData(editedData);
       } else {
         console.log('Wat');
       }
