@@ -34,7 +34,7 @@ export const EditItemModal = ({route, navigation}) => {
   const [editedNote, setEditedNote] = useState(title);
   const [editedDate, setEditedDate] = useState(date);
   const [editedFrequency, setEditedFrequency] = useState();
-  const [editedWantsNotification, setEditedWantsNotification] = useState();
+  const [editedWantsNotification, setEditedWantsNotification] = useState(false);
 
   /* Lifecycle Hooks */
   useEffect(() => {}, [dummyData]);

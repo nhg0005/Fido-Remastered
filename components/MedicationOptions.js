@@ -59,7 +59,10 @@ export const MedicationOptions = ({
         />
       </TouchableOpacity>
       {/* TOOD: Frequency */}
-      <Text style={textStyles.sectionHeader}>Frequency</Text>
+      <View style={containerStyles.viewWithIcon}>
+        <Text style={textStyles.sectionHeader}>Frequency</Text>
+        <Text style={{color: 'rgb(194, 199, 197)'}}>Coming soon...</Text>
+      </View>
       {/* TODO: Wants notif?  */}
       <TouchableOpacity
         style={containerStyles.viewWithIcon}
