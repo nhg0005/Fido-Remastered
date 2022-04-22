@@ -24,7 +24,7 @@ import {AppointmentOptions} from '../components/AppointmentOptions';
  **************/
 export const NewItemModal = ({navigation}) => {
   /* State Hooks */
-  //   const {dummyData} = useContext(UserDataContext);
+  const {dummyData, setDummyData} = useContext(UserDataContext);
   const [selectedList, setSelectedList] = useState('To do');
 
   const [newNote, setNewNote] = useState('');
@@ -33,12 +33,13 @@ export const NewItemModal = ({navigation}) => {
   const [wantsNotification, setWantsNotification] = useState();
 
   /* Lifecycle Hooks */
-  //   useEffect(() => {}, [dummyData]);
+  useEffect(() => {}, [dummyData]);
+
   // Adds new item header button to call modal
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => console.log('Add button pressed')}>
+        <TouchableOpacity onPress={() => addListItem()}>
           <Text style={{color: '#fff', fontSize: 18}}>Add</Text>
         </TouchableOpacity>
       ),
@@ -48,14 +49,43 @@ export const NewItemModal = ({navigation}) => {
         </TouchableOpacity>
       ),
     });
-  }, [navigation]);
+
+    // TODO: 'Add' button handler
+    const addListItem = () => {
+      // If 'To do' is selected
+      if (selectedList === 'To do') {
+        // Make a copy of dummyData
+        const updatedData = [...dummyData];
+        // Replace the object in copy
+        let obj = updatedData.find((o, i) => {
+          if (o.title === 'To do') {
+            updatedData[i] = {
+              title: o.title,
+              data: [...o.data, {item: newNote, date: newDate}],
+            };
+            return true;
+          }
+        });
+        // Set copy to state
+        setDummyData(updatedData);
+      } else {
+        console.log('Wat');
+      }
+    };
+  }, [
+    navigation,
+    selectedList,
+    newNote,
+    newDate,
+    frequency,
+    setSelectedList,
+    dummyData,
+    setDummyData,
+  ]);
 
   /* Handlers */
-  // TODO: Input handler
+  // TODO: Input handler?
 
-  // TOOD: 'Add' button handler
-
-  // TODO: Add a 'cancel' and an 'add' button to the headers
   // TODO: Make picking a date optional. Maybe pull up the picker with the TO is tapped. Add placeholder note to TO 'Tap here to add a date/time'
   return (
     <KeyboardAvoidingView
