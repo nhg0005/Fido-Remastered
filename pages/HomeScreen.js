@@ -91,6 +91,8 @@ const Item = ({title, date, sectionTitle, navigation}) => {
         });
       case 'Medication':
         return date.toLocaleString([], {
+          month: 'numeric',
+          day: 'numeric',
           hour: 'numeric',
           minute: '2-digit',
         });
