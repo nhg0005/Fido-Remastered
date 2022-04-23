@@ -19,6 +19,7 @@ import {WalkOptions} from '../components/WalkOptions';
 import {MedicationOptions} from '../components/MedicationOptions';
 import {AppointmentOptions} from '../components/AppointmentOptions';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 /**************
  * Page
@@ -75,6 +76,20 @@ export const EditItemModal = ({route, navigation}) => {
         });
         // Set copy to state
         setDummyData(editedData);
+
+        // Remove existing notification
+        PushNotificationIOS.removePendingNotificationRequests(title);
+        // Check if local notification is wanted
+        console.log(editedWantsNotification);
+        if (editedWantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: editedNote,
+            title: 'Fido',
+            subtitle: sectionTitle + ' reminder',
+            body: editedNote,
+            fireDate: editedDate,
+          });
+        }
       } // If 'Meals' is selected
       else if (sectionTitle === 'Meals') {
         // Make a copy of dummyData
@@ -94,6 +109,25 @@ export const EditItemModal = ({route, navigation}) => {
         });
         // Set copy to state
         setDummyData(editedData);
+
+        // Remove existing notification
+        PushNotificationIOS.removePendingNotificationRequests(title);
+        // Check if local notification is wanted
+        console.log(editedWantsNotification);
+        if (editedWantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: editedNote,
+            title: 'Fido',
+            subtitle: sectionTitle + ' reminder',
+            body: editedNote,
+            fireDate: editedDate,
+            repeats: true,
+            repeatsComponent: {
+              hour: true,
+              minute: true,
+            },
+          });
+        }
       } // If 'Walks' is selected
       else if (sectionTitle === 'Walks') {
         // Make a copy of dummyData
@@ -113,6 +147,27 @@ export const EditItemModal = ({route, navigation}) => {
         });
         // Set copy to state
         setDummyData(editedData);
+
+        // Remove existing notification
+        PushNotificationIOS.removePendingNotificationRequests(
+          date.toISOString(),
+        );
+        // Check if local notification is wanted
+        console.log(editedWantsNotification);
+        if (editedWantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: editedDate.toISOString(),
+            title: 'Fido',
+            subtitle: sectionTitle + ' reminder',
+            // body: editedNote,
+            fireDate: editedDate,
+            repeats: true,
+            repeatsComponent: {
+              hour: true,
+              minute: true,
+            },
+          });
+        }
       } // If 'Medication' is selected
       else if (sectionTitle === 'Medication') {
         // Make a copy of dummyData
@@ -136,6 +191,26 @@ export const EditItemModal = ({route, navigation}) => {
         });
         // Set copy to state
         setDummyData(editedData);
+
+        // Remove existing notification
+        PushNotificationIOS.removePendingNotificationRequests(title);
+        // Check if local notification is wanted
+        console.log(editedWantsNotification);
+        if (editedWantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: editedNote,
+            title: 'Fido',
+            subtitle: sectionTitle + ' reminder',
+            body: editedNote,
+            fireDate: editedDate,
+            repeats: true,
+            repeatsComponent: {
+              day: true,
+              hour: true,
+              minute: true,
+            },
+          });
+        }
       } // If 'Appointments' is selected
       else if (sectionTitle === 'Appointments') {
         // Make a copy of dummyData
@@ -158,6 +233,20 @@ export const EditItemModal = ({route, navigation}) => {
         });
         // Set copy to state
         setDummyData(editedData);
+
+        // Remove existing notification
+        PushNotificationIOS.removePendingNotificationRequests(title);
+        // Check if local notification is wanted
+        console.log(editedWantsNotification);
+        if (editedWantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: editedNote,
+            title: 'Fido',
+            subtitle: sectionTitle + ' reminder',
+            body: editedNote,
+            fireDate: editedDate,
+          });
+        }
       } else {
         console.log('Wat');
       }
@@ -174,6 +263,8 @@ export const EditItemModal = ({route, navigation}) => {
     dummyData,
     setDummyData,
     title,
+    editedWantsNotification,
+    date,
   ]);
 
   /* Handlers */
