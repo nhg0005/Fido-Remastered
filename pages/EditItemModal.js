@@ -270,10 +270,7 @@ export const EditItemModal = ({route, navigation}) => {
   /* Handlers */
 
   return (
-    <KeyboardAvoidingView
-      behavior="position"
-      enabled
-      style={containerStyles.main}>
+    <View style={containerStyles.main}>
       {sectionTitle === 'To do' && (
         <ToDoOptions
           newNote={editedNote}
@@ -324,7 +321,7 @@ export const EditItemModal = ({route, navigation}) => {
           setWantsNotification={setEditedWantsNotification}
         />
       )}
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
