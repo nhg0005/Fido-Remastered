@@ -18,6 +18,7 @@ import {MealOptions} from '../components/MealOptions';
 import {WalkOptions} from '../components/WalkOptions';
 import {MedicationOptions} from '../components/MedicationOptions';
 import {AppointmentOptions} from '../components/AppointmentOptions';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 /**************
  * Page
@@ -68,6 +69,18 @@ export const NewItemModal = ({navigation}) => {
         });
         // Set copy to state
         setDummyData(updatedData);
+
+        // Check if local notification is wanted
+        console.log(wantsNotification);
+        if (wantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: newNote,
+            title: 'Fido',
+            subtitle: selectedList + ' reminder',
+            body: newNote,
+            fireDate: newDate,
+          });
+        }
       } else if (selectedList === 'Meals') {
         // Make a copy of dummyData
         const updatedData = [...dummyData];
