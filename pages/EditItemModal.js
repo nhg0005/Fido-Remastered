@@ -78,7 +78,7 @@ export const EditItemModal = ({route, navigation}) => {
         setDummyData(editedData);
 
         // Remove existing notification
-        PushNotificationIOS.removePendingNotificationRequests(title);
+        PushNotificationIOS.removePendingNotificationRequests([title]);
         // Check if local notification is wanted
         console.log(editedWantsNotification);
         if (editedWantsNotification === true) {
@@ -111,7 +111,7 @@ export const EditItemModal = ({route, navigation}) => {
         setDummyData(editedData);
 
         // Remove existing notification
-        PushNotificationIOS.removePendingNotificationRequests(title);
+        PushNotificationIOS.removePendingNotificationRequests([title]);
         // Check if local notification is wanted
         console.log(editedWantsNotification);
         if (editedWantsNotification === true) {
@@ -149,9 +149,9 @@ export const EditItemModal = ({route, navigation}) => {
         setDummyData(editedData);
 
         // Remove existing notification
-        PushNotificationIOS.removePendingNotificationRequests(
+        PushNotificationIOS.removePendingNotificationRequests([
           date.toISOString(),
-        );
+        ]);
         // Check if local notification is wanted
         console.log(editedWantsNotification);
         if (editedWantsNotification === true) {
@@ -193,7 +193,7 @@ export const EditItemModal = ({route, navigation}) => {
         setDummyData(editedData);
 
         // Remove existing notification
-        PushNotificationIOS.removePendingNotificationRequests(title);
+        PushNotificationIOS.removePendingNotificationRequests([title]);
         // Check if local notification is wanted
         console.log(editedWantsNotification);
         if (editedWantsNotification === true) {
@@ -235,7 +235,7 @@ export const EditItemModal = ({route, navigation}) => {
         setDummyData(editedData);
 
         // Remove existing notification
-        PushNotificationIOS.removePendingNotificationRequests(title);
+        PushNotificationIOS.removePendingNotificationRequests([title]);
         // Check if local notification is wanted
         console.log(editedWantsNotification);
         if (editedWantsNotification === true) {
