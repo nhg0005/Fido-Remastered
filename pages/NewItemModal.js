@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   SectionList,
-  TouchableOpacity,
+  Pressable,
   SafeAreaView,
   ScrollView,
   View,
@@ -40,14 +40,14 @@ export const NewItemModal = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => addListItem()}>
+        <Pressable onPress={() => addListItem()}>
           <Text style={{color: '#fff', fontSize: 18}}>Add</Text>
-        </TouchableOpacity>
+        </Pressable>
       ),
       headerLeft: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Pressable onPress={() => navigation.navigate('Home')}>
           <Text style={{color: '#fff', fontSize: 18}}>Cancel</Text>
-        </TouchableOpacity>
+        </Pressable>
       ),
     });
 

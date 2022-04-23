@@ -6,7 +6,7 @@
  */
 
 import React, {useEffect} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {Pressable, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './pages/HomeScreen';

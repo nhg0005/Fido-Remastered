@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   SectionList,
-  TouchableOpacity,
+  Pressable,
   SafeAreaView,
   ScrollView,
   View,
@@ -44,14 +44,14 @@ export const EditItemModal = ({route, navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => editListItem()}>
+        <Pressable onPress={() => editListItem()}>
           <Text style={{color: '#fff', fontSize: 18}}>Edit</Text>
-        </TouchableOpacity>
+        </Pressable>
       ),
       headerLeft: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Pressable onPress={() => navigation.navigate('Home')}>
           <Text style={{color: '#fff', fontSize: 18}}>Cancel</Text>
-        </TouchableOpacity>
+        </Pressable>
       ),
     });
 

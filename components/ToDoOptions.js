@@ -1,11 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, TextInput, Pressable} from 'react-native';
 import {UserDataContext} from '../context/UserDataContext';
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -48,7 +42,7 @@ export const ToDoOptions = ({
       />
       {/* Date & Time */}
       <Text style={textStyles.sectionHeader}>Date</Text>
-      <TouchableOpacity style={containerStyles.listItem}>
+      <Pressable style={containerStyles.listItem}>
         <DateTimePicker
           testID="dateTimePicker"
           value={newDate}
@@ -56,9 +50,9 @@ export const ToDoOptions = ({
           is24Hour={true}
           onChange={onChange}
         />
-      </TouchableOpacity>
+      </Pressable>
       {/* TODO: Wants notif? */}
-      <TouchableOpacity
+      <Pressable
         style={containerStyles.viewWithIcon}
         onPress={() => setWantsNotification(!wantsNotification)}>
         <Text style={textStyles.sectionHeader}>Want to be notified?</Text>
@@ -67,7 +61,7 @@ export const ToDoOptions = ({
         ) : (
           <EntIcon name="circle" size={30} color="rgb(194, 199, 197)" />
         )}
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };

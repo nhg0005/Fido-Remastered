@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
   SectionList,
-  TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {UserDataContext} from '../context/UserDataContext';
 
@@ -22,9 +22,9 @@ export const HomeScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('NewItemModal')}>
+        <Pressable onPress={() => navigation.navigate('NewItemModal')}>
           <Text style={{color: '#fff', fontSize: 36}}>+</Text>
-        </TouchableOpacity>
+        </Pressable>
       ),
     });
   }, [navigation]);
@@ -105,7 +105,7 @@ const Item = ({title, date, sectionTitle, navigation}) => {
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       style={containerStyles.listItem}
       onPress={() => {
         navigation.navigate('EditItemModal', {
@@ -123,7 +123,7 @@ const Item = ({title, date, sectionTitle, navigation}) => {
         {/* TODO: Write a function up top: IF ELSE statements for showing date/time properly based on section. Pass in section */}
         {dateToString()}
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
