@@ -128,6 +128,23 @@ export const NewItemModal = ({navigation}) => {
         });
         // Set copy to state
         setDummyData(updatedData);
+
+        // Check if local notification is wanted
+        console.log(wantsNotification);
+        if (wantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: newDate.toISOString(),
+            title: 'Fido',
+            subtitle: selectedList + ' reminder',
+            // body: newNote,
+            fireDate: newDate,
+            repeats: true,
+            repeatsComponent: {
+              hour: true,
+              minute: true,
+            },
+          });
+        }
       } else if (selectedList === 'Medication') {
         // Make a copy of dummyData
         const updatedData = [...dummyData];
@@ -146,6 +163,24 @@ export const NewItemModal = ({navigation}) => {
         });
         // Set copy to state
         setDummyData(updatedData);
+
+        // Check if local notification is wanted
+        console.log(wantsNotification);
+        if (wantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: newNote,
+            title: 'Fido',
+            subtitle: selectedList + ' reminder',
+            body: newNote,
+            fireDate: newDate,
+            repeats: true,
+            repeatsComponent: {
+              day: true,
+              hour: true,
+              minute: true,
+            },
+          });
+        }
       } else if (selectedList === 'Appointments') {
         // Make a copy of dummyData
         const updatedData = [...dummyData];
@@ -161,6 +196,18 @@ export const NewItemModal = ({navigation}) => {
         });
         // Set copy to state
         setDummyData(updatedData);
+
+        // Check if local notification is wanted
+        console.log(wantsNotification);
+        if (wantsNotification === true) {
+          PushNotificationIOS.addNotificationRequest({
+            id: newNote,
+            title: 'Fido',
+            subtitle: selectedList + ' reminder',
+            body: newNote,
+            fireDate: newDate,
+          });
+        }
       } else {
         console.log('Wat');
       }
