@@ -52,12 +52,11 @@ export const MedicationOptions = ({
           onChange={onChange}
         />
       </Pressable>
-      {/* TOOD: Frequency */}
+      {/* TODO: Frequency */}
       <View style={containerStyles.viewWithIcon}>
         <Text style={textStyles.sectionHeader}>Frequency</Text>
         <Text style={{color: 'rgb(194, 199, 197)'}}>Coming soon...</Text>
       </View>
-      {/* TODO: Wants notif?  */}
       <Pressable
         style={containerStyles.viewWithIcon}
         onPress={() => setWantsNotification(!wantsNotification)}>

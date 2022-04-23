@@ -66,7 +66,6 @@ export const HomeScreen = ({navigation}) => {
 /**************
  * Components
  **************/
-// TODO: Add onPress and bring up a modal with the appropriate data for editing
 const Item = ({title, date, sectionTitle, navigation}) => {
   const {dummyData, setDummyData} = useContext(UserDataContext);
 
@@ -259,14 +258,10 @@ const Item = ({title, date, sectionTitle, navigation}) => {
       }}
       onLongPress={() => createLongPressAlert()}>
       {/* Width used for making the ellipses work, along with numberOfLines and flex: 1 */}
-      {/* TODO: Add frequency for Medication, right under the time */}
       <Text style={(textStyles.listItem, {width: 200})} numberOfLines={1}>
         {title}
       </Text>
-      <Text style={textStyles.listItem}>
-        {/* TODO: Write a function up top: IF ELSE statements for showing date/time properly based on section. Pass in section */}
-        {dateToString()}
-      </Text>
+      <Text style={textStyles.listItem}>{dateToString()}</Text>
     </Pressable>
   );
 };

@@ -51,7 +51,7 @@ export const NewItemModal = ({navigation}) => {
       ),
     });
 
-    // TODO: 'Add' button handler
+    // 'Add' button handler
     const addListItem = () => {
       // If 'To do' is selected
       if (selectedList === 'To do') {
@@ -229,8 +229,6 @@ export const NewItemModal = ({navigation}) => {
   ]);
 
   /* Handlers */
-  // TODO: Input handler?
-
   // TODO: Make picking a date optional. Maybe pull up the picker with the TO is tapped. Add placeholder note to TO 'Tap here to add a date/time'
   return (
     <KeyboardAvoidingView

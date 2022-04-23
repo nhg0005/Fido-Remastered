@@ -18,6 +18,13 @@ const UserDataProvider = ({children}) => {
       ],
     },
     {
+      title: 'Walks',
+      data: [
+        {item: 'Morning', date: new Date()},
+        {item: 'Evening', date: new Date()},
+      ],
+    },
+    {
       title: 'Medication',
       data: [
         {item: 'Heart worm prevention', date: new Date()},

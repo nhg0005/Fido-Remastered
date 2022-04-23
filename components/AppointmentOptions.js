@@ -49,7 +49,6 @@ export const AppointmentOptions = ({
           onChange={onChange}
         />
       </Pressable>
-      {/* TODO: Wants notif? */}
       <Pressable
         style={containerStyles.viewWithIcon}
         onPress={() => setWantsNotification(!wantsNotification)}>

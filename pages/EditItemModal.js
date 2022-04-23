@@ -55,7 +55,7 @@ export const EditItemModal = ({route, navigation}) => {
       ),
     });
 
-    // TODO: 'Edit' button handler
+    // 'Edit' button handler
     const editListItem = () => {
       // If 'To do' is selected
       if (sectionTitle === 'To do') {
