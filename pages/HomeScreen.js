@@ -260,7 +260,7 @@ const Item = ({title, date, sectionTitle, navigation}) => {
       }}
       onLongPress={() => createLongPressAlert()}>
       {/* Width used for making the ellipses work, along with numberOfLines and flex: 1 */}
-      <Text style={(textStyles.listItem, {width: 200})} numberOfLines={1}>
+      <Text style={[textStyles.listItem, {width: 200}]} numberOfLines={1}>
         {title}
       </Text>
       <Text style={textStyles.listItem}>{dateToString()}</Text>
@@ -297,8 +297,8 @@ const textStyles = StyleSheet.create({
     marginVertical: 5,
   },
   listItem: {
-    fontSize: 17,
-    marginHorizontal: 8,
+    fontSize: 15,
+    marginHorizontal: 3,
     color: '#32292F',
     fontWeight: '500',
   },
