@@ -7,8 +7,10 @@ import {
   Text,
   SectionList,
   Pressable,
+  Alert,
 } from 'react-native';
 import {UserDataContext} from '../context/UserDataContext';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 /**************
  * Page
@@ -66,7 +68,7 @@ export const HomeScreen = ({navigation}) => {
  **************/
 // TODO: Add onPress and bring up a modal with the appropriate data for editing
 const Item = ({title, date, sectionTitle, navigation}) => {
-  const {setDummyData} = useContext(UserDataContext);
+  const {dummyData, setDummyData} = useContext(UserDataContext);
 
   /* Functions */
   const dateToString = () => {
@@ -104,6 +106,147 @@ const Item = ({title, date, sectionTitle, navigation}) => {
     return date;
   };
 
+  // Delete an item from a list
+  const deleteListItem = () => {
+    // If 'To do' is selected
+    if (sectionTitle === 'To do') {
+      // Make a copy of dummyData
+      const editedData = [...dummyData];
+      // Replace the object in copy
+      let obj = editedData.find((o, i) => {
+        if (o.title === 'To do') {
+          // Search the data object to find the object that's being edited, matched by 'item'
+          let edObj = o.data.find((p, j) => {
+            if (p.item === title) {
+              // Edit the found object
+              // o.data[j] = {item: editedNote, date: editedDate};
+              o.data.splice(j, 1);
+              return true;
+            }
+          });
+        }
+      });
+      // Set copy to state
+      setDummyData(editedData);
+
+      // Remove existing notification
+      PushNotificationIOS.removePendingNotificationRequests([title]);
+    } // If 'Meals' is selected
+    else if (sectionTitle === 'Meals') {
+      // Make a copy of dummyData
+      const editedData = [...dummyData];
+      // Replace the object in copy
+      let obj = editedData.find((o, i) => {
+        if (o.title === 'Meals') {
+          // Search the data object to find the object that's being edited, matched by 'item'
+          let edObj = o.data.find((p, j) => {
+            if (p.item === title) {
+              // Edit the found object
+              // o.data[j] = {item: editedNote, date: editedDate};
+              o.data.splice(j, 1);
+              return true;
+            }
+          });
+        }
+      });
+      // Set copy to state
+      setDummyData(editedData);
+
+      // Remove existing notification
+      PushNotificationIOS.removePendingNotificationRequests([title]);
+    } // If 'Walks' is selected
+    else if (sectionTitle === 'Walks') {
+      // Make a copy of dummyData
+      const editedData = [...dummyData];
+      // Replace the object in copy
+      let obj = editedData.find((o, i) => {
+        if (o.title === 'Walks') {
+          // Search the data object to find the object that's being edited, matched by 'item'
+          let edObj = o.data.find((p, j) => {
+            if (p.item === title) {
+              // Edit the found object
+              // o.data[j] = {item: editedNote, date: editedDate};
+              o.data.splice(j, 1);
+              return true;
+            }
+          });
+        }
+      });
+      // Set copy to state
+      setDummyData(editedData);
+
+      // Remove existing notification
+      PushNotificationIOS.removePendingNotificationRequests([
+        date.toISOString(),
+      ]);
+    } // If 'Medication' is selected
+    else if (sectionTitle === 'Medication') {
+      // Make a copy of dummyData
+      const editedData = [...dummyData];
+      // Replace the object in copy
+      let obj = editedData.find((o, i) => {
+        if (o.title === 'Medication') {
+          // Search the data object to find the object that's being edited, matched by 'item'
+          let edObj = o.data.find((p, j) => {
+            if (p.item === title) {
+              // Edit the found object
+              // o.data[j] = {
+              //   item: editedNote,
+              //   date: editedDate,
+              //   frequency: editedFrequency,
+              // };
+              o.data.splice(j, 1);
+              return true;
+            }
+          });
+        }
+      });
+      // Set copy to state
+      setDummyData(editedData);
+
+      // Remove existing notification
+      PushNotificationIOS.removePendingNotificationRequests([title]);
+    } // If 'Appointments' is selected
+    else if (sectionTitle === 'Appointments') {
+      // Make a copy of dummyData
+      const editedData = [...dummyData];
+      // Replace the object in copy
+      let obj = editedData.find((o, i) => {
+        if (o.title === 'Appointments') {
+          // Search the data object to find the object that's being edited, matched by 'item'
+          let edObj = o.data.find((p, j) => {
+            if (p.item === title) {
+              // Edit the found object
+              // o.data[j] = {
+              //   item: editedNote,
+              //   date: editedDate,
+              // };
+              o.data.splice(j, 1);
+              return true;
+            }
+          });
+        }
+      });
+      // Set copy to state
+      setDummyData(editedData);
+
+      // Remove existing notification
+      PushNotificationIOS.removePendingNotificationRequests([title]);
+    } else {
+      console.log('Wat');
+    }
+  };
+
+  const createLongPressAlert = () =>
+    Alert.alert('Hello there!', 'Would you like to delete this item?', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'Yes', onPress: () => deleteListItem()},
+    ]);
+
   return (
     <Pressable
       style={containerStyles.listItem}
@@ -113,7 +256,8 @@ const Item = ({title, date, sectionTitle, navigation}) => {
           date: date,
           sectionTitle: sectionTitle,
         });
-      }}>
+      }}
+      onLongPress={() => createLongPressAlert()}>
       {/* Width used for making the ellipses work, along with numberOfLines and flex: 1 */}
       {/* TODO: Add frequency for Medication, right under the time */}
       <Text style={(textStyles.listItem, {width: 200})} numberOfLines={1}>
